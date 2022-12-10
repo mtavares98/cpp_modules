@@ -1,6 +1,6 @@
 SRC	= megaphone.cpp
 
-OBJ	= $(SRC:.o=.cpp)
+OBJ	= $(SRC:.cpp=.o)
 
 NAME	= megaphone
 
