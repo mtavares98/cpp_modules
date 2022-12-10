@@ -1,12 +1,14 @@
-SRC	= megaphone.cpp
+SRC	= PhoneBook.cpp \
+	  Contact.cpp \
+	  main.cpp
 
 OBJ	= $(SRC:.cpp=.o)
 
-NAME	= megaphone
+NAME	= phone
 
 CC	= g++
 
-CFLAGS	= -Wall -Wextra -Werror -std=c++98
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I.
 
 all:	$(NAME)
 
