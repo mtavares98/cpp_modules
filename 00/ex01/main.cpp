@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 03:47:46 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/10 22:09:51 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:19:38 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int	main(int ac, char **av)
 			pb.SEARCH();
 		else if (s == "exit")
 			pb.EXIT();
+		pb.~PhoneBook();
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 03:23:09 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/10 23:09:39 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:30:06 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ PhoneBook::PhoneBook(void)
 
 PhoneBook::~PhoneBook(void)
 {
+	for(int i = 0; i < 8; i++)
+		this->data[i].value = "";
 	std::cout << "Deleting the phonebook" << '\n';
 }
 
@@ -55,6 +57,12 @@ void PhoneBook::ADD(void)
 		this->size++;
 }
 
+/*
+	Print header |     index|  fistName|  lastName|  nickname|
+	print body with correct parameters
+	recive an user input to give an index to print the correct contact if exists
+*/
+
 void PhoneBook::SEARCH(void)
 {
 	std::cout << "Entrou no search" << '\n';
@@ -63,7 +71,10 @@ void PhoneBook::SEARCH(void)
 void PhoneBook::	EXIT(void)
 {
 	for (int i = 0; i < 8; i++) {
-		this->c[i].~Contact();
+		if (!this->c[i].getFirstName().empty())
+			this->c[i].~Contact();
+		else
+			break ;
 	}
 	this->~PhoneBook();
 	exit(EXIT_SUCCESS);
