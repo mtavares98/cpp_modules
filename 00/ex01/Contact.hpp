@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 02:06:06 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/10 22:28:03 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/12 00:19:38 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <iomanip>
-#include <string>
+#include <stdlib.h>
 
 typedef struct s_data	t_data;
 
@@ -29,6 +29,7 @@ class Contact
 {
 	private:
 		std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
+		void	getNewContact(const Contact &c, int index);
 	public:
 		Contact(void);
 		Contact(t_data *data);

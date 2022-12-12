@@ -6,28 +6,28 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 03:47:46 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/11 00:19:38 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/12 00:13:59 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include "Contact.hpp"
 
-int	main(int ac, char **av)
+int	main(void)
 {
 	PhoneBook pb = PhoneBook();
 	std::string s;
 
 	while (1)
 	{
+		std::cout << "Commands available: add, search or exit\n";
 		std::cin >> s;
-		std::cout << s << '\n';
 		if (s == "add")
 			pb.ADD();
 		else if (s == "search")
 			pb.SEARCH();
 		else if (s == "exit")
 			pb.EXIT();
-		pb.~PhoneBook();
+		else
+			std::cout << "Enter add or search or exit\n";
 	}
 }

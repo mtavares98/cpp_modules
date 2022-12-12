@@ -8,12 +8,15 @@ NAME	= phone
 
 CC	= g++
 
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I.
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I. -g -fsanitize=address
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)

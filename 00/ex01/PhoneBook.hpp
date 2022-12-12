@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 03:11:03 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/10 22:40:36 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/12 00:00:32 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PHONEBOOK_HPP
 
 #include "Contact.hpp"
+#include <cstdio>
 
 class	PhoneBook
 {
@@ -21,6 +22,9 @@ class	PhoneBook
 		Contact c[8];
 		t_data data[5];
 		int	index, size;
+		void	printTableHeader(void);
+		void	printParameter(std::string str);
+		void	printTableContent(Contact c, int index);
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
