@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 17:57:19 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/12 00:09:36 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:29:40 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,10 @@ void PhoneBook::ADD(void)
 			return ;
 		}
 	}
-	Contact tmp = Contact(this->data);
-	if (c[this->index].getFirstName().empty())
-		c[this->index++] = tmp;
-	else {
+	if (!c[this->index].getFirstName().empty())
 		c[this->index].~Contact();
-		c[this->index++] = tmp;
-	}
-	if (this->index == 9)
+	c[this->index].setContact(data);
+	if (++this->index == 9)
 		this->index = 0;
 	if (this->size != 8)
 		this->size++;
@@ -67,33 +63,28 @@ void PhoneBook::printParameter(std::string str)
 	return ;
 }
 
-void PhoneBook::printTableContent(Contact c, int index)
+void PhoneBook::printTableContent(int index)
 {
 	std::cout << "|         ";
 	std::cout << index;
 	std::cout << '|';
-	printParameter(c.getFirstName());
+	printParameter(this->c[index].getFirstName());
 	std::cout << '|';
-	printParameter(c.getLastName());
+	printParameter(this->c[index].getLastName());
 	std::cout << '|';
-	printParameter(c.getNickname());
+	printParameter(this->c[index].getNickname());
 	std::cout << '|';
-	printParameter(c.getPhoneNumber());
-	std::cout << '|';
-	printParameter(c.getDarkestSecret());
-	std::cout << '|';
+	std::cout << '\n';
 }
 
 void PhoneBook::printTableHeader(void)
 {
-	if (this->c[1].getFirstName().empty())
-		return ;
 	std::cout << "|     index|First Name| Last Name|  Nickname|" << '\n';
 	std::cout << "|----------|----------|----------|----------|" << '\n';
 	for(int i = 0; i < 8; i++) {
 		if (this->c[i].getFirstName().empty())
 			return ;
-		printTableContent(this->c[i], i);
+		printTableContent(i);
 		std::cout << "|----------|----------|----------|----------|" << '\n';
 	}
 }
@@ -104,7 +95,7 @@ void PhoneBook::SEARCH(void)
 	std::string	tmp2 = "0123456789";
 	int	index;
 
-	if (this->c[1].getFirstName().empty()) {
+	if (this->c[0].getFirstName().empty()) {
 		std::cout << "There's no contacts\n";
 		return ;
 	}

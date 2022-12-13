@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 02:06:06 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/12 00:19:38 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:13:01 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,21 @@ class Contact
 {
 	private:
 		std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
-		void	getNewContact(const Contact &c, int index);
 	public:
 		Contact(void);
 		Contact(t_data *data);
 		~Contact(void);
+		void	setContact(t_data *data);
 		std::string getFirstName();
 		std::string getLastName();
 		std::string getNickname();
 		std::string getPhoneNumber();
 		std::string getDarkestSecret();
+		std::string setFirstName(std::string firstName);
+		std::string setLastName(std::string lastName);
+		std::string setNickname(std::string nickname);
+		std::string setPhoneNumber(std::string phoneNumber);
+		std::string setDarkestSecret(std::string  darkestSecret);
 };
 
 #endif
