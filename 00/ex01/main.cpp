@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 03:47:46 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/12 00:13:59 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/14 01:02:00 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int	main(void)
 			pb.ADD();
 		else if (s == "search")
 			pb.SEARCH();
-		else if (s == "exit")
+		else if (s == "exit") {
 			pb.EXIT();
+			return (0);
+		}
 		else
 			std::cout << "Enter add or search or exit\n";
 	}

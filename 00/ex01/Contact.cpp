@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 03:23:05 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/13 15:13:37 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/14 00:58:05 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ Contact::Contact(t_data *data)
 
 Contact::~Contact(void)
 {
-	std::cout << "Deleting a Contact" << '\n';
 }
 
 std::string Contact::getFirstName()
