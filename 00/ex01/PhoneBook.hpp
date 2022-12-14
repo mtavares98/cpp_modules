@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 03:11:03 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/14 01:06:46 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/14 02:17:36 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class	PhoneBook
 		~PhoneBook(void);
 		void ADD(void);
 		void SEARCH(void);
-		void EXIT(void);
 };
 
 #endif

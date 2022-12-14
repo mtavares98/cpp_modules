@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 17:57:19 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/14 01:15:03 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/14 03:22:56 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,24 @@ void PhoneBook::ADD(void)
 	for (i = 0; i < 5; i++) {
 		std::cout << this->data[i].msg << '\n';
 		std::cin >> this->data[i].value;
+		if (i == 3) {
+			if (this->data[i].value.length() != 9) {
+				std::cout << "Phone number only accepts 9 chars\n";
+				return ;
+			}
+			for (int j = 0; j < 9; j++) {
+				std::cout << this->data[i].value[j];
+				if (std::isdigit(this->data[i].value[j]) == 0) {
+					std::cout << "Phone number only accepts numbers\n";
+					return ;
+				}
+			}
+		}
 		if (this->data[i].value.empty()) {
 			std::cout << "Failed creating a contact all information is required\n";
 			return ;
 		}
 	}
-	if (!c[this->index].getFirstName().empty())
-		c[this->index].~Contact();
 	c[this->index].setContact(data);
 	if (++this->index == 9)
 		this->index = 0;
@@ -124,9 +135,4 @@ void PhoneBook::SEARCH(void)
 	std::cout << this->c[index].getNickname() << '\n';
 	std::cout << this->c[index].getPhoneNumber() << '\n';
 	std::cout << this->c[index].getDarkestSecret() << '\n';
-}
-
-void PhoneBook::	EXIT(void)
-{
-	return ;
 }
