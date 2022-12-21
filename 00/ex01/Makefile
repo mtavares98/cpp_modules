@@ -4,7 +4,7 @@ SRC	= PhoneBook.cpp \
 
 OBJ	= $(SRC:.cpp=.o)
 
-NAME	= phone
+NAME	= phonebook
 
 CC	= g++
 

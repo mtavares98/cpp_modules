@@ -1,15 +1,10 @@
-SRC	=	Zombie.cpp \
-		newZombie.cpp \
-		randomChump.cpp \
-		main.cpp
+SRC	=	main.cpp
 
 OBJ	=	$(SRC:.cpp=.o)
 
-NAME	=	brainz
-
+NAME	=	hithisisbrains
 CC	=	g++
-
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g #-fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g -fsanitize=address
 
 all:	$(NAME)
 
@@ -18,7 +13,6 @@ $(NAME):	$(OBJ)
 
 %.o:	%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
 	rm -rf $(OBJ)
 

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 17:33:40 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/19 20:23:40 by mtavares         ###   ########.fr       */
+/*   Created: 2022/12/19 17:28:29 by mtavares          #+#    #+#             */
+/*   Updated: 2022/12/19 21:48:29 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_H
+# define ZOMBIE_H
 
-Zombie::Zombie(void)
-{
-	std::cout << "Standard constructor called\n";
-}
+#include <iostream>
 
-Zombie::Zombie(std::string name)
+class Zombie
 {
-	this->name = name;
-}
+	private:
+		std::string	name;
+	public:
+		Zombie();
+		~Zombie();
+		void	announce(void);
+		std::string	setName(std::string name);
+};
 
-Zombie::~Zombie(void)
-{
-	std::cout << "Standard destructor called\n";
-}
+Zombie	*zombieHorde(int n, std::string name);
 
-void	Zombie::announce(void)
-{
-	std::cout << this->name;
-	std::cout << ": BraiiiiiiinnnzzzZ...\n";
-}
+#endif

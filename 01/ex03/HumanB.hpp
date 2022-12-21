@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 17:33:40 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/19 20:23:40 by mtavares         ###   ########.fr       */
+/*   Created: 2022/12/20 22:03:17 by mtavares          #+#    #+#             */
+/*   Updated: 2022/12/20 22:18:54 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANB_H
+# define HUMANB_H
 
-Zombie::Zombie(void)
-{
-	std::cout << "Standard constructor called\n";
-}
+#include "Weapon.hpp"
 
-Zombie::Zombie(std::string name)
+class HumanB
 {
-	this->name = name;
-}
+	private:
+		std::string name;
+		Weapon *weapon;
+	public:
+		HumanB(std::string const &name);
+		~HumanB(void);
+		void	attack(void);
+		void	setWeapon(Weapon &weapon);
+};
 
-Zombie::~Zombie(void)
-{
-	std::cout << "Standard destructor called\n";
-}
-
-void	Zombie::announce(void)
-{
-	std::cout << this->name;
-	std::cout << ": BraiiiiiiinnnzzzZ...\n";
-}
+#endif
