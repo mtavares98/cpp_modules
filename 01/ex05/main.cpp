@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/24 13:04:58 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/24 15:27:03 by mtavares         ###   ########.fr       */
+/*   Created: 2022/12/24 15:22:02 by mtavares          #+#    #+#             */
+/*   Updated: 2022/12/24 15:24:09 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_H
-# define HARL_H
+#include "Harl.hpp"
 
-#include <iostream>
-
-
-class Harl
+int	main(void)
 {
-	typedef	struct s_func
-	{
-		std::string	name;
-		void	(Harl::*action)(void);
-	}	t_func;
-	private:
-		t_func	func[4];
-		void	debug(void);
-		void	info(void);
-		void	warning(void);
-		void	error(void);
-	public:
-		Harl(void);
-		~Harl(void);
-		void	complain(std::string level);
-};
+	Harl	comp;
 
-
-#endif
+	comp.complain("DEBUG");
+	comp.complain("INFO");
+	comp.complain("WARNING");
+	comp.complain("A toa");
+}

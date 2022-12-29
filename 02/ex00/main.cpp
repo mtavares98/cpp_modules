@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/24 13:04:58 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/24 15:27:03 by mtavares         ###   ########.fr       */
+/*   Created: 2022/12/24 20:00:18 by mtavares          #+#    #+#             */
+/*   Updated: 2022/12/24 20:00:53 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_H
-# define HARL_H
-
 #include <iostream>
+#include "Fixed.hpp"
 
-
-class Harl
+int	main( void )
 {
-	typedef	struct s_func
-	{
-		std::string	name;
-		void	(Harl::*action)(void);
-	}	t_func;
-	private:
-		t_func	func[4];
-		void	debug(void);
-		void	info(void);
-		void	warning(void);
-		void	error(void);
-	public:
-		Harl(void);
-		~Harl(void);
-		void	complain(std::string level);
-};
-
-
-#endif
+	Fixed a;
+	Fixed b( a );
+	Fixed c;
+	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return 0;
+}

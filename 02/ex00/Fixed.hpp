@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/24 13:04:58 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/24 15:27:03 by mtavares         ###   ########.fr       */
+/*   Created: 2022/12/24 19:09:26 by mtavares          #+#    #+#             */
+/*   Updated: 2022/12/25 13:27:49 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_H
-# define HARL_H
+#ifndef FIXED
+#define FIXED_HPP
 
 #include <iostream>
 
-
-class Harl
+class Fixed
 {
-	typedef	struct s_func
-	{
-		std::string	name;
-		void	(Harl::*action)(void);
-	}	t_func;
 	private:
-		t_func	func[4];
-		void	debug(void);
-		void	info(void);
-		void	warning(void);
-		void	error(void);
+		int	rawBits;
+		static const int	numberBits = 8;
 	public:
-		Harl(void);
-		~Harl(void);
-		void	complain(std::string level);
+		Fixed(void);
+		Fixed(Fixed const &copy);
+		Fixed &operator=(Fixed const &copy);
+		~Fixed(void);
+		int	getRawBits(void) const;
+		void	setRawBits( int const raw);
 };
-
-
 #endif

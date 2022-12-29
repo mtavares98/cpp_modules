@@ -37,6 +37,7 @@ Harl::Harl(void)
 
 Harl::~Harl(void)
 {
+	std::cout << "Called default destructor\n";
 }
 
 void Harl::complain(std::string level)
