@@ -5,31 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/10 03:11:03 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/14 02:17:36 by mtavares         ###   ########.fr       */
+/*   Created: 2023/02/07 16:50:38 by mtavares          #+#    #+#             */
+/*   Updated: 2023/02/08 15:21:00 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-
+#include <iostream>
 #include "Contact.hpp"
-#include <cstdio>
+#include <iomanip>
 
-class	PhoneBook
-{
-	private:
-		Contact c[8];
-		t_data data[5];
-		int	index, size;
-		void	printTableHeader(void);
-		void	printParameter(std::string str);
-		void	printTableContent(int index);
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		void ADD(void);
-		void SEARCH(void);
+struct data {
+    std::string value;
 };
 
-#endif
+class PhoneBook
+{
+    private:
+        Contact contact[8];
+        int     size;
+        int     index;
+        struct data data[5];
+        void setElement(std::string element, int i);
+        void setContact(void);
+        void printParameter(std::string str);
+        void printTableContent(int index);
+        void printTableHeader(void);
+
+    public:
+        PhoneBook(void);
+        ~PhoneBook(void);
+        void ADD();
+        void SEARCH();
+        int EXIT();
+};

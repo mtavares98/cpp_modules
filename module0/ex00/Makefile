@@ -1,23 +1,18 @@
-SRC	= PhoneBook.cpp \
-	  Contact.cpp \
-	  main.cpp
+SRC	=		main.cpp
 
-OBJ	= $(SRC:.cpp=.o)
+OBJ	=	$(SRC:.cpp=.o)
 
-NAME	= phonebook
-
-CC	= g++
-
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -I. -g# -fsanitize=address
+NAME	=	megaphone
+CC	=	g++
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g -fsanitize=address
 
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp
+%.o:	%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
 	rm -rf $(OBJ)
 

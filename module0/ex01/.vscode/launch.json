@@ -8,13 +8,14 @@
 			"name": "(gdb) Iniciar",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/brainz",
+			"program": "${workspaceFolder}/phoneBook",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "lldb",
+			"MIMode": "gdb",
+			"miDebuggerPath": "/usr/bin/gdb",
 			"setupCommands": [
 				{
 					"description": "Habilitar a reformatação automática para gdb",
