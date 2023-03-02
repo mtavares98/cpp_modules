@@ -1,0 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/02 22:49:07 by mtavares          #+#    #+#             */
+/*   Updated: 2023/03/02 23:04:41 by mtavares         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Cat.hpp"
+
+Cat::Cat(void) {
+    std::cout << "Called default constructor of Cat" << std::endl;
+    this->type = "Cat";
+}
+
+Cat::Cat(Cat const& copy)  : Animal() {
+    *this = copy;
+}
+
+Cat& Cat::operator=(Cat const& copy) {
+    this->type = copy.type;
+    return *this;
+}
+
+Cat::~Cat(void) {
+    std::cout << "Called default destructor of Cat" << std::endl;
+}
+
+void Cat::makeSound(void) const {
+    std::cout << "Miau" << std::endl;
+}
