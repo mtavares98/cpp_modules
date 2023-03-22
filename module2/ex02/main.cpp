@@ -5,8 +5,15 @@ int main( void ) {
     Fixed a;
     Fixed const b( Fixed(5.05f) * Fixed(2));
     Fixed c = Fixed(3);
+
     std::cout << a << std::endl;
     std::cout << ++a << std::endl;
+    Fixed tmp = Fixed(a);
+    std::cout << c << " < " << tmp;
+    if (c > a)
+        std::cout << " True" << std::endl;
+    else
+        std::cout << " False" << std::endl;
     std::cout << a << std::endl;
     std::cout << a++ << std::endl;
     std::cout << a << std::endl;

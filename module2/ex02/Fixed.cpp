@@ -46,23 +46,45 @@ std::ostream& operator<<(std::ostream& out, Fixed const& value) {
 }
 
 bool Fixed::operator>(Fixed const& value) {
-    return this->getRawBits() > value.getRawBits();
+    Fixed delta = Fixed(0);
+
+    delta.setRawBits(1);
+    if (*this == value)
+        return false;
+    return (this->getRawBits() > value.getRawBits());
 }
 
 bool Fixed::operator<(Fixed const& value) {
-    return this->getRawBits() < value.getRawBits();
+    Fixed delta = Fixed(0);
+
+    delta.setRawBits(1);
+    if (*this == value)
+            return false;
+    return (this->getRawBits() < value.getRawBits());
 }
 
 bool Fixed::operator>=(Fixed const& value) {
-    return this->getRawBits() >= value.getRawBits();
+    Fixed delta = Fixed(0);
+
+    delta.setRawBits(1);
+    return (this->getRawBits() >= value.getRawBits() || this->getRawBits() - delta.getRawBits() >= value.getRawBits() \
+    || this->getRawBits() + delta.getRawBits() >= value.getRawBits());
 }
 
 bool Fixed::operator<=(Fixed const& value) {
-    return this->getRawBits() <= value.getRawBits();
+    Fixed delta = Fixed(0);
+
+    delta.setRawBits(1);
+    return (this->getRawBits() <= value.getRawBits() || this->getRawBits() - delta.getRawBits() <= value.getRawBits() \
+    || this->getRawBits() + delta.getRawBits() <= value.getRawBits());
 }
 
 bool Fixed::operator==(Fixed const& value) {
-    return this->getRawBits() == value.getRawBits();
+    Fixed delta = Fixed(0);
+
+    delta.setRawBits(1);
+    return (this->getRawBits() == value.getRawBits() || this->getRawBits() - delta.getRawBits() == value.getRawBits() \
+    || this->getRawBits() + delta.getRawBits() == value.getRawBits());
 }
 
 bool Fixed::operator!=(Fixed const& value) {
@@ -95,7 +117,6 @@ Fixed Fixed::operator/(Fixed const& value) {
 
 Fixed Fixed::operator++() {
     this->rawBits++;
-
     return *this;
 }
 
@@ -109,7 +130,6 @@ Fixed Fixed::operator++(int) {
 
 Fixed Fixed::operator--() {
     this->rawBits--;
-
     return *this;
 }
 
