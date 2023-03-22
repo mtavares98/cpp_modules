@@ -9,13 +9,13 @@ int main( void ) {
     std::cout << a << std::endl;
     std::cout << ++a << std::endl;
     Fixed tmp = Fixed(a);
-    std::cout << c << " < " << tmp;
-    if (c > a)
+    std::cout << a << std::endl;
+    std::cout << a++ << std::endl;
+    std::cout << tmp << " != " << a;
+    if (tmp != a)
         std::cout << " True" << std::endl;
     else
         std::cout << " False" << std::endl;
-    std::cout << a << std::endl;
-    std::cout << a++ << std::endl;
     std::cout << a << std::endl;
     std::cout << b << std::endl;
     std::cout << a + c << std::endl;

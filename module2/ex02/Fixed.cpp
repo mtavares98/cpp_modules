@@ -88,7 +88,11 @@ bool Fixed::operator==(Fixed const& value) {
 }
 
 bool Fixed::operator!=(Fixed const& value) {
-    return this->getRawBits() != value.getRawBits();
+    Fixed delta = Fixed(0);
+
+    delta.setRawBits(1);
+    return (this->getRawBits() == value.getRawBits() || this->getRawBits() - delta.getRawBits() == value.getRawBits() \
+    || this->getRawBits() + delta.getRawBits() == value.getRawBits());
 }
 
 Fixed Fixed::operator+(Fixed const& value) {
