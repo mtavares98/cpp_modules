@@ -30,6 +30,6 @@ Dog::~Dog(void) {
     std::cout << "Called default destructor of Dog" << std::endl;
 }
 
-void Dog::makeSound(void) {
+void Dog::makeSound(void) const {
     std::cout << "Ãoão" << std::endl;
 }
