@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:40:40 by mtavares          #+#    #+#             */
-/*   Updated: 2023/03/01 19:02:28 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:09:14 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SCAVTRAP_HPP
 
 #include <iostream>
+#include <limits>
 
 #include "ClapTrap.hpp"
 

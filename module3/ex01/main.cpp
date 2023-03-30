@@ -6,30 +6,26 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 19:03:43 by mtavares          #+#    #+#             */
-/*   Updated: 2023/03/01 19:10:55 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:41:46 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
 int main(void) {
     ScavTrap bob = ScavTrap("Bob");
-    ClapTrap jim = ClapTrap("Jim");
+    ScavTrap jim = ScavTrap("Jim");
+    ScavTrap bobCopy = ScavTrap(bob);
 
+    for (int i = 0; i < 50; i++) {
+        if (i % 5 == 0)
+            jim.beRepaired(100);
+        bob.attack(jim.getName());
+        jim.takeDamage(bob.getAttack());
+    }
     bob.attack(jim.getName());
-    jim.takeDamage(bob.getAttack());
-    jim.beRepaired(2);
-    bob.beRepaired(2);
-    bob.guardGate();
-    std::cout << std::endl;
-    ScavTrap bob2 = ScavTrap(bob);
-    ClapTrap jim2 = ClapTrap(jim);
-    bob2.attack(jim2.getName());
-    jim2.takeDamage(bob2.getAttack());
-    jim2.beRepaired(2);
-    bob2.beRepaired(2);
-    bob2.guardGate();
+    bob.beRepaired(1);
+    bobCopy.guardGate();
 }

@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:53:30 by mtavares          #+#    #+#             */
-/*   Updated: 2023/03/01 19:12:31 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:39:12 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,20 @@ void ScavTrap::guardGate(void) {
 }
 
 void ScavTrap::attack(const std::string& target) {
-    if (this->energyPoints < 1) {
+    if (!this->energyPoints) {
         std::cout << "There is no more energy points available" << std::endl;
         return;
+    }
+    if (!this->hitPoints) {
+        std::cout << "There is no more hitPoints available" << std::endl;
+        return ;
     }
     std::cout << "ScavTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage!" << std::endl;
     this->energyPoints--;
 }
 
 void ScavTrap::beRepaired(unsigned int amount) {
-    if (this->energyPoints < 1) {
+    if (!this->energyPoints) {
         std::cout << "There is no more energy points available" << std::endl;
         return;
     }
@@ -70,5 +74,5 @@ void ScavTrap::beRepaired(unsigned int amount) {
     if (this->hitPoints > 100)
         this->hitPoints = 100;
     this->energyPoints--;
-    std::cout << "ScavTrap " << this->name << " Repaired " << amount << " Now is having " << this->hitPoints << std::endl;
+    std::cout << "ScavTrap " << this->name << " repaired " << amount << " now is having " << this->hitPoints << std::endl;
 }
