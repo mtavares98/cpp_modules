@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 19:17:57 by mtavares          #+#    #+#             */
-/*   Updated: 2023/03/30 16:22:28 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:48:17 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ FragTrap::FragTrap() {
     std::cout << "Called default constructor from FragTrap" << std::endl;
     this->name = "";
     this->hitPoints = 100;
-    this->energyPoints = 50;
+    this->energyPoints = 100;
     this->attackDamage = 30;
 }
 

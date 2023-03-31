@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:53:30 by mtavares          #+#    #+#             */
-/*   Updated: 2023/03/29 15:39:12 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:51:42 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,6 @@ void ScavTrap::attack(const std::string& target) {
     if (!this->energyPoints) {
         std::cout << "There is no more energy points available" << std::endl;
         return;
-    }
-    if (!this->hitPoints) {
-        std::cout << "There is no more hitPoints available" << std::endl;
-        return ;
     }
     std::cout << "ScavTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage!" << std::endl;
     this->energyPoints--;

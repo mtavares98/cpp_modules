@@ -5,7 +5,7 @@ SRC	=	FragTrap.cpp \
 
 OBJ	=	$(SRC:.cpp=.o)
 
-NAME	=	scravTrap
+NAME	=	fragTrap
 CC	=	g++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g -fsanitize=address
 
