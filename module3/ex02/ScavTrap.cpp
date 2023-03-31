@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:53:30 by mtavares          #+#    #+#             */
-/*   Updated: 2023/03/01 19:12:31 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:27:11 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ void ScavTrap::attack(const std::string& target) {
 void ScavTrap::beRepaired(unsigned int amount) {
     if (this->energyPoints < 1) {
         std::cout << "There is no more energy points available" << std::endl;
+        return;
+    }
+    if (amount == 0) {
+        std::cout << "You need an amount of at least 1 to recover" << std::endl;
         return;
     }
     if (this->hitPoints == 100) {

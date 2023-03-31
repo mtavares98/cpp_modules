@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:37:59 by mtavares          #+#    #+#             */
-/*   Updated: 2023/03/29 14:05:38 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:09:32 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,8 @@ int main(void) {
         bob.attack(jim.getName());
         jim.takeDamage(bob.getAttack());
     }
-     bob.attack(jim.getName());
-    for (int i = 0; i < 10; i++) {
-        bobCpy.attack(jim.getName());
-        jim.takeDamage(bobCpy.getAttack());
-    }
     bobCpy.attack(jim.getName());
-    jim.beRepaired(2);
+    jim.beRepaired(0);
+    jim.beRepaired(1);
+    bob.beRepaired(1);
 }
-

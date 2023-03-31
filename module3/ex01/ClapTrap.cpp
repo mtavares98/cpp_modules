@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:58:02 by mtavares          #+#    #+#             */
-/*   Updated: 2023/03/31 15:58:02 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:28:12 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ void ClapTrap::takeDamage(unsigned int amount) {
 void ClapTrap::beRepaired(unsigned int amount) {
     if (this->energyPoints < 1) {
         std::cout << "There is no more energy points available" << std::endl;
+        return;
+    }
+    if (amount == 0) {
+        std::cout << "You need an amount of at least 1 to recover" << std::endl;
         return;
     }
     if (this->hitPoints == 10) {

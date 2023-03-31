@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 19:03:43 by mtavares          #+#    #+#             */
-/*   Updated: 2023/03/29 15:41:46 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/03/31 16:17:17 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int main(void) {
     }
     bob.attack(jim.getName());
     bob.beRepaired(1);
-    bobCopy.guardGate();
+    jim.beRepaired(0);
 }
