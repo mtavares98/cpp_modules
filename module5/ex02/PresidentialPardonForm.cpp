@@ -6,13 +6,13 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 22:25:32 by mtavares          #+#    #+#             */
-/*   Updated: 2023/07/19 22:27:38 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/07/20 19:03:28 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AForm(target, 25, 5), target(target) {}
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AForm("persidencial pardon", 25, 5), target(target) {}
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy) : AForm(copy), target(copy.target) {}
 

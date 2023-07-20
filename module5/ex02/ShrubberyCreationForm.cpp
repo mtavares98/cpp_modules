@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:30:59 by mtavares          #+#    #+#             */
-/*   Updated: 2023/07/19 22:03:24 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/07/20 19:03:47 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ShrubberyCreationForm.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm(target, 145, 137), target(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("shrubbery creations", 145, 137), target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy) : AForm(copy), target(copy.target) {}
 

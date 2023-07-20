@@ -6,15 +6,15 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 18:30:59 by mtavares          #+#    #+#             */
-/*   Updated: 2023/07/19 22:21:30 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/07/20 19:03:12 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm(target, 72, 45), target(target) {}
+#include <stdlib.h>
+
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("robotmy request", 72, 45), target(target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy) : AForm(copy), target(copy.target) {}
 
