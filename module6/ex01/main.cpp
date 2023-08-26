@@ -5,22 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 20:50:43 by mtavares          #+#    #+#             */
-/*   Updated: 2023/08/26 15:13:07 by mtavares         ###   ########.fr       */
+/*   Created: 2023/08/26 15:29:58 by mtavares          #+#    #+#             */
+/*   Updated: 2023/08/26 15:58:42 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
+#include "Data.hpp"
 
-int main(int ac, char **av) {
-    if (ac != 2) {
-        std::cerr << "Only recive one argument" << std::endl;
-        return (1);
-    }
-    try {
-        ScalarConverter::converter((const std::string)av[1]);
-    }
-    catch (std::exception &e) {
-        std::cerr << e.what() << std::endl;
-    }
+int main(void) {
+    Data d1 = { "This string is for testing", 42 };
+    Data *d2;
+    uintptr_t ptr;
+
+    std::cout << "d1: " << d1.data << ", len: " << d1.len << std::endl;
+    ptr = Serializer::serialize(&d1);
+    d2 = Serializer::deserialize(ptr);
+    std::cout << "d2: " << d2->data << ", len: " << d2->len << std::endl;
 }

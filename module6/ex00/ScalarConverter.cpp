@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 21:16:35 by mtavares          #+#    #+#             */
-/*   Updated: 2023/08/07 19:41:22 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:25:36 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,34 @@
 #include <cerrno>
 #include <climits>
 #include <cstdlib>
+#include <iomanip>
 
-ScalarConverter::ScalarConverter(void) {}
+void ScalarConverter::converter(const std::string &input) {
+    int type;
 
-ScalarConverter::ScalarConverter(ScalarConverter const &copy) {
-    *this = copy;
+    type = getType(input);
+    if (type == -1)
+        throw ScalarConverter::ValidArgs();
+    try {
+        switch (type) {
+            case 0:
+                getNumsFromChar(input);
+                break;
+            case 1:
+                getNumsFromInt(input);
+                break;
+            case 2:
+                getNumsFromFloat(input);
+                break;
+            case 3:
+                getNumsFromDouble(input);
+                break;
+        }
+    }
+    catch (std::exception &e) {
+        throw e;
+    }
 }
-
-ScalarConverter &ScalarConverter::operator=(ScalarConverter const &copy) {
-    (void)copy;
-    return *this;
-}
-
-ScalarConverter::~ScalarConverter(void) {}
 
 int ScalarConverter::getType(const std::string &input) {
     int type = -1;
@@ -39,25 +54,26 @@ int ScalarConverter::getType(const std::string &input) {
     if (type != -1)
         return type;
     type = checkDecimal(input);
-    // prepare_args(input, type);
+    return type;
 }
 
-bool ScalarConverter::checkChar(const std::string &input) {
+int ScalarConverter::checkChar(const std::string &input) {
     if (input.length() == 3 && input[0] == '\'' && input[2] == '\'')
         return CHAR;
+    return -1;
 }
 
-bool ScalarConverter::checkInt(const std::string &input) {
+int ScalarConverter::checkInt(const std::string &input) {
     int i = 0;
 
     if (input[i] == '+' || input[i] == '-')
         i++;
     if (!input[i])
-        return false;
+        return -1;
     for (; isdigit(input[i]); i++)
         ;
     if (input[i] != '\0')
-        return false;
+        return -1;
     return INT;
 }
 
@@ -73,52 +89,102 @@ int ScalarConverter::checkDecimal(const std::string &input) {
         i++;
     for (; isdigit(input[i]); i++)
         ;
-    if (input[i] == '.' && input[i + 1] != '\0')
+    if (input[i] == '.' && input[i + 1] != '\0') {
         foundPoint = true;
+        i++;
+    }
     for (; isdigit(input[i]); i++)
         ;
-    if (foundPoint == true && input[i] == 'f' && i == input.length())
+    if (foundPoint == true && input[i] == 'f' && i + 1 == (int)input.length())
         return FLOAT;
-    else if (foundPoint == true && input[i] == '\0')
+    else if (foundPoint == true && input[i] == '\0' && i == (int)input.length())
         return DOUBLE;
     return -1;
 }
 
-char ScalarConverter::convertChar(const std::string &input) {
-    char res;
+void ScalarConverter::getNumsFromChar(const std::string &input) {
+    char c;
+    int i;
+    float f;
+    double d;
 
-    res = static_cast<char>(input[1]);
-    return res;
+    c = input[1];
+    i = static_cast<int>(c);
+    f = static_cast<float>(c);
+    d = static_cast<double>(c);
+    ScalarConverter::display_values(c, i, f, d, 1);
 }
 
-int ScalarConverter::convertInt(const std::string &input) {
-    int res;
+void ScalarConverter::getNumsFromInt(const std::string &input) {
+    char c;
+    int i;
+    float f;
+    double d;
 
-    res = std::strtol(input.c_str(), NULL, 10);
-    if (res > INT_MAX || res < INT_MIN || errno == ERANGE)
+    i = std::strtol(input.c_str(), NULL, 10);
+    if (i > INT_MAX || i < INT_MIN || errno == ERANGE)
         throw ScalarConverter::ImpossibleConvertion();
-    return res;
+    c = static_cast<char>(i);
+    f = static_cast<float>(i);
+    d = static_cast<double>(i);
+    ScalarConverter::display_values(c, i, f, d, 1);
 }
 
-float ScalarConverter::convertFloat(const std::string &input) {
-    float res;
+void ScalarConverter::getNumsFromFloat(const std::string &input) {
+    char c;
+    int i;
+    float f;
+    double d;
+    char possible;
 
-    res = strtof(input.c_str(), NULL);
+    f = strtof(input.c_str(), NULL);
     if (errno == ERANGE)
         throw ScalarConverter::ImpossibleConvertion();
-    return res;
+    if (input != "nanf" && input != "+inff" && input != "-inff") {
+        c = static_cast<char>(f);
+        i = static_cast<int>(f);
+        d = static_cast<double>(f);
+    } else {
+        possible = 0;
+    }
+    ScalarConverter::display_values(c, i, f, d, possible);
 }
 
-double ScalarConverter::convertDouble(const std::string &input) {
-    double res;
+void ScalarConverter::getNumsFromDouble(const std::string &input) {
+    char c;
+    int i;
+    float f;
+    double d;
+    char possible = 1;
 
-    res = strtod(input.c_str(), NULL);
+    d = strtod(input.c_str(), NULL);
     if (errno == ERANGE)
         throw ScalarConverter::ImpossibleConvertion();
-    return res;
+    if (input != "nan" && input != "+inf" && input != "-inf") {
+        c = static_cast<char>(d);
+        i = static_cast<int>(d);
+        f = static_cast<float>(d);
+    } else {
+        possible = 0;
+    }
+    ScalarConverter::display_values(c, i, f, d, possible);
 }
 
-void ScalarConverter::display_values(char c, int i, float f, double d, int type) {
+void ScalarConverter::display_values(char c, int i, float f, double d, char possible) {
+    std::cout << "Char: ";
+    if (possible == 0)
+        std::cout << "impossible" << std::endl;
+    else if (c < 32 || c > 126)
+        std::cout << " non displayable" << std::endl;
+    else
+        std::cout << c << std::endl;
+    std::cout << "Int: ";
+    if (possible == 0)
+        std::cout << "impossible" << std::endl;
+    else
+        std::cout << i << std::endl;
+    std::cout << "Float: " << std::fixed << std::setprecision(1) <<  f << 'f' << std::endl;
+    std::cout << "Double: " << std::fixed << std::setprecision(1) << d << std::endl;
 }
 
 const char *ScalarConverter::ImpossibleConvertion::what(void) const throw() {
