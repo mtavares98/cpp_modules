@@ -4,7 +4,7 @@ OBJ	=	$(SRC:.cpp=.o)
 
 NAME	=	templates
 CC	=	g++
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g# -fsanitize=address
 
 all:	$(NAME)
 
