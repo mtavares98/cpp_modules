@@ -1,9 +1,9 @@
-SRC	=	Base.cpp \
+SRC	=	Span.cpp \
 		main.cpp
 
 OBJ	=	$(SRC:.cpp=.o)
 
-NAME	=	identify
+NAME	=	span
 CC	=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g -fsanitize=address
 

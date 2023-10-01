@@ -1,10 +1,10 @@
-SRC	=	Base.cpp \
+SRC	=	BitcoinExchange.cpp \
 		main.cpp
 
 OBJ	=	$(SRC:.cpp=.o)
 
-NAME	=	identify
-CC	=	c++
+NAME	=	btc
+CC	=	g++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g -fsanitize=address
 
 all:	$(NAME)

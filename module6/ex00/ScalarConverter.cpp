@@ -16,6 +16,7 @@
 #include <climits>
 #include <cstdlib>
 #include <iomanip>
+#include <float.h>
 
 void ScalarConverter::converter(const std::string &input) {
     int type;
@@ -40,7 +41,7 @@ void ScalarConverter::converter(const std::string &input) {
         }
     }
     catch (std::exception &e) {
-        throw e;
+        throw;
     }
 }
 
@@ -58,7 +59,7 @@ int ScalarConverter::getType(const std::string &input) {
 }
 
 int ScalarConverter::checkChar(const std::string &input) {
-    if (input.length() == 3 && input[0] == '\'' && input[2] == '\'')
+    if (input.length() == 1 && !isdigit(input[0]))
         return CHAR;
     return -1;
 }
@@ -89,7 +90,7 @@ int ScalarConverter::checkDecimal(const std::string &input) {
         i++;
     for (; isdigit(input[i]); i++)
         ;
-    if (input[i] == '.' && input[i + 1] != '\0') {
+    if (input[i] == '.') {
         foundPoint = true;
         i++;
     }
@@ -108,7 +109,7 @@ void ScalarConverter::getNumsFromChar(const std::string &input) {
     float f;
     double d;
 
-    c = input[1];
+    c = input[0];
     i = static_cast<int>(c);
     f = static_cast<float>(c);
     d = static_cast<double>(c);
@@ -117,7 +118,7 @@ void ScalarConverter::getNumsFromChar(const std::string &input) {
 
 void ScalarConverter::getNumsFromInt(const std::string &input) {
     char c;
-    int i;
+    long int i;
     float f;
     double d;
 
@@ -135,18 +136,26 @@ void ScalarConverter::getNumsFromFloat(const std::string &input) {
     int i;
     float f;
     double d;
-    char possible;
+    char possible = 0;
 
-    f = strtof(input.c_str(), NULL);
-    if (errno == ERANGE)
+    d = strtod(input.c_str(), NULL);
+    if (d < FLT_MIN || d > FLT_MAX)
         throw ScalarConverter::ImpossibleConvertion();
-    if (input != "nanf" && input != "+inff" && input != "-inff") {
+    f = static_cast<float>(d);
+    std::cout << std::fixed << std::setprecision(1) <<  f << 'f' << std::endl;
+    if (input == "nanf" || input == "+inff" || input == "-inff") {
+        possible = 2;
+    } else if (INT_MIN > static_cast<long int>(f) || INT_MAX < static_cast<long int>(f)) {
+        possible = 2;
+    } else if (CHAR_MIN > static_cast<int>(f) || CHAR_MAX < static_cast<int>(f)) {
+        possible = 1;
+        i = static_cast<int>(f);
+    }
+    else {
         c = static_cast<char>(f);
         i = static_cast<int>(f);
-        d = static_cast<double>(f);
-    } else {
-        possible = 0;
     }
+    d = static_cast<double>(f);
     ScalarConverter::display_values(c, i, f, d, possible);
 }
 
@@ -155,31 +164,38 @@ void ScalarConverter::getNumsFromDouble(const std::string &input) {
     int i;
     float f;
     double d;
-    char possible = 1;
+    char possible = 0;
 
     d = strtod(input.c_str(), NULL);
     if (errno == ERANGE)
         throw ScalarConverter::ImpossibleConvertion();
-    if (input != "nan" && input != "+inf" && input != "-inf") {
+    if (input == "nan" || input == "+inf" || input == "-inf") {
+        possible = 2;
+    }
+    else if (INT_MIN > static_cast<long int>(d) || INT_MAX < static_cast<long int>(d)) {
+        possible = 2;
+    }
+    else if (CHAR_MIN > static_cast<int>(d) || CHAR_MAX < static_cast<int>(d)) {
+        possible = 1;
+        i = static_cast<int>(d);
+    } else {
         c = static_cast<char>(d);
         i = static_cast<int>(d);
-        f = static_cast<float>(d);
-    } else {
-        possible = 0;
     }
+    f = static_cast<float>(d);
     ScalarConverter::display_values(c, i, f, d, possible);
 }
 
 void ScalarConverter::display_values(char c, int i, float f, double d, char possible) {
     std::cout << "Char: ";
-    if (possible == 0)
+    if (possible > 0)
         std::cout << "impossible" << std::endl;
     else if (c < 32 || c > 126)
         std::cout << " non displayable" << std::endl;
     else
         std::cout << c << std::endl;
     std::cout << "Int: ";
-    if (possible == 0)
+    if (possible > 1)
         std::cout << "impossible" << std::endl;
     else
         std::cout << i << std::endl;

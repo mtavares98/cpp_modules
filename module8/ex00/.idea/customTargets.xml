@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="38994a69-cbc9-4d86-8e87-1cef0446a2de" name="easyfind" defaultType="MAKE">
+      <configuration id="06761c17-b538-410c-b2eb-18530e9310a5" name="easyfind">
+        <build type="MAKE">
+          <make targetName="re" />
+        </build>
+        <clean type="MAKE">
+          <make targetName="fclean" />
+        </clean>
+      </configuration>
+    </target>
+  </component>
+</project>

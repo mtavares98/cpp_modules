@@ -1,9 +1,8 @@
-SRC	=	Base.cpp \
-		main.cpp
+SRC	=	main.cpp
 
 OBJ	=	$(SRC:.cpp=.o)
 
-NAME	=	identify
+NAME	=	array
 CC	=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g -fsanitize=address
 

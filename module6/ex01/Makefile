@@ -4,7 +4,7 @@ SRC	=	Serializer.cpp \
 OBJ	=	$(SRC:.cpp=.o)
 
 NAME	=	serializer
-CC	=	g++
+CC	=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g -fsanitize=address
 
 all:	$(NAME)
