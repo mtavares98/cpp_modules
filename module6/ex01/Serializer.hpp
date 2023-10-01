@@ -19,9 +19,13 @@
 
 class Serializer
 {
-
+    private:
+        Serializer(void);
+        Serializer(const Serializer &copy);
     public:
         static uintptr_t  serialize(Data *ptr);
         static Data *deserialize(uintptr_t raw);
+        Serializer &operator=(const Serializer &copy);
+        ~Serializer();
 };
 #endif

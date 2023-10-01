@@ -210,3 +210,13 @@ const char *ScalarConverter::ImpossibleConvertion::what(void) const throw() {
 const char *ScalarConverter::ValidArgs::what(void) const throw() {
     return "Invalid Argument";
 }
+
+ScalarConverter::ScalarConverter(void) {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter &copy) {}
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &copy) { return *this; }
+
+ScalarConverter::~ScalarConverter() {}
+
+ScalarConverter &

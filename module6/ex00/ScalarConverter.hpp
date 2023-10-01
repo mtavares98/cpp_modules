@@ -32,6 +32,9 @@ class ScalarConverter {
     static void getNumsFromDouble(const std::string &input);
     static void display_values(char c, int i, float f, double d, char possible);
     static int getType(const std::string &input);
+    ScalarConverter();
+    ScalarConverter(const ScalarConverter &copy);
+    ScalarConverter &operator=(const ScalarConverter &copy);
 
    public:
     static void converter(const std::string &input);
@@ -41,5 +44,6 @@ class ScalarConverter {
     class ValidArgs : public std::exception {
         const char *what(void) const throw();
     };
+    ~ScalarConverter();
 };
 #endif
