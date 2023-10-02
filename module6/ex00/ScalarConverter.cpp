@@ -213,10 +213,11 @@ const char *ScalarConverter::ValidArgs::what(void) const throw() {
 
 ScalarConverter::ScalarConverter(void) {}
 
-ScalarConverter::ScalarConverter(const ScalarConverter &copy) {}
+ScalarConverter::ScalarConverter(const ScalarConverter &copy) { (void)copy; }
 
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter &copy) { return *this; }
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &copy) {
+    (void)copy;
+    return *this;
+}
 
 ScalarConverter::~ScalarConverter() {}
-
-ScalarConverter &
