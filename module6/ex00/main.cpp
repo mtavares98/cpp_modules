@@ -14,7 +14,7 @@
 
 int main(int ac, char **av) {
     if (ac != 2) {
-        std::cerr << "Only recive one argument" << std::endl;
+        std::cerr << "Only receive one argument" << std::endl;
         return (1);
     }
     try {
