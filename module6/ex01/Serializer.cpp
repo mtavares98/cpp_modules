@@ -10,8 +10,11 @@ Data *Serializer::deserialize(uintptr_t raw) {
 
 Serializer::Serializer() {}
 
-Serializer::Serializer(const Serializer &copy) {}
+Serializer::Serializer(const Serializer &copy) { (void)copy; }
 
-Serializer &Serializer::operator=(const Serializer &copy) { return *this; }
+Serializer &Serializer::operator=(const Serializer &copy) {
+    (void)copy;
+    return *this;
+}
 
 Serializer::~Serializer() {}
