@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 21:27:12 by mtavares          #+#    #+#             */
-/*   Updated: 2023/08/26 15:22:56 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:34:46 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ class ScalarConverter {
     static int getType(const std::string &input);
     ScalarConverter();
     ScalarConverter(const ScalarConverter &copy);
-    ScalarConverter &operator=(const ScalarConverter &copy);
 
    public:
     static void converter(const std::string &input);
@@ -44,6 +43,7 @@ class ScalarConverter {
     class ValidArgs : public std::exception {
         const char *what(void) const throw();
     };
+    ScalarConverter &operator=(const ScalarConverter &copy);
     ~ScalarConverter();
 };
 #endif

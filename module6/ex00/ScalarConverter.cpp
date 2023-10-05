@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 21:16:35 by mtavares          #+#    #+#             */
-/*   Updated: 2023/08/26 15:25:36 by mtavares         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:25:15 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,11 @@ void ScalarConverter::getNumsFromChar(const std::string &input) {
     i = static_cast<int>(c);
     f = static_cast<float>(c);
     d = static_cast<double>(c);
-    ScalarConverter::display_values(c, i, f, d, 1);
+    ScalarConverter::display_values(c, i, f, d, 0);
 }
 
 void ScalarConverter::getNumsFromInt(const std::string &input) {
-    char c;
+    char c = 0;
     long int i;
     float f;
     double d;
@@ -128,21 +128,20 @@ void ScalarConverter::getNumsFromInt(const std::string &input) {
     c = static_cast<char>(i);
     f = static_cast<float>(i);
     d = static_cast<double>(i);
-    ScalarConverter::display_values(c, i, f, d, 1);
+    ScalarConverter::display_values(c, i, f, d, 0);
 }
 
 void ScalarConverter::getNumsFromFloat(const std::string &input) {
-    char c;
-    int i;
-    float f;
-    double d;
+    char c = 0;
+    int i = 0;
+    float f = 0;
+    double d = 0;
     char possible = 0;
 
     d = strtod(input.c_str(), NULL);
     if (d < FLT_MIN || d > FLT_MAX)
         throw ScalarConverter::ImpossibleConvertion();
     f = static_cast<float>(d);
-    std::cout << std::fixed << std::setprecision(1) <<  f << 'f' << std::endl;
     if (input == "nanf" || input == "+inff" || input == "-inff") {
         possible = 2;
     } else if (INT_MIN > static_cast<long int>(f) || INT_MAX < static_cast<long int>(f)) {
@@ -160,10 +159,10 @@ void ScalarConverter::getNumsFromFloat(const std::string &input) {
 }
 
 void ScalarConverter::getNumsFromDouble(const std::string &input) {
-    char c;
-    int i;
-    float f;
-    double d;
+    char c = 0;
+    int i = 0;
+    float f = 0;
+    double d = 0;
     char possible = 0;
 
     d = strtod(input.c_str(), NULL);
