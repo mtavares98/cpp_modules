@@ -5,22 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 09:45:55 by mtavares          #+#    #+#             */
-/*   Updated: 2023/11/03 11:22:52 by mtavares         ###   ########.fr       */
+/*   Created: 2023/11/03 14:54:58 by mtavares          #+#    #+#             */
+/*   Updated: 2023/11/03 15:31:28 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstdlib>
 #include <exception>
 #include <iostream>
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
 int main(int ac, char **av) {
   (void)ac;
   try {
-    BitcoinExchange btc = BitcoinExchange(av[1]);
+    RPN rpn = RPN(av[1]);
   } catch (std::exception &e) {
-    std::cerr << "Error: " << e.what() << std::endl;
+    std::cout << "Error" << std::endl;
   }
 }

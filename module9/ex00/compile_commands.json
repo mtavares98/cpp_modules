@@ -1,0 +1,21 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-I.",
+      "-g",
+      "-fsanitize=address",
+      "-c",
+      "-o",
+      "BitcoinExchange.o",
+      "BitcoinExchange.cpp"
+    ],
+    "directory": "/home/mtavares/cpp_modules/module9/ex00",
+    "file": "/home/mtavares/cpp_modules/module9/ex00/BitcoinExchange.cpp",
+    "output": "/home/mtavares/cpp_modules/module9/ex00/BitcoinExchange.o"
+  }
+]

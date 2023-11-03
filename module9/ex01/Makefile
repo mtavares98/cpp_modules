@@ -1,10 +1,9 @@
-SRC	=	BitcoinExchange.cpp \
-			helper.cpp \
-			main.cpp
+SRC	=	RPN.cpp \
+		main.cpp
 
 OBJ	=	$(SRC:.cpp=.o)
 
-NAME	=	btc
+NAME	=	RPN
 CC	=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g -fsanitize=address
 

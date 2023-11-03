@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   helper.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 09:45:55 by mtavares          #+#    #+#             */
-/*   Updated: 2023/11/03 11:22:52 by mtavares         ###   ########.fr       */
+/*   Created: 2023/11/01 21:18:13 by mtavares          #+#    #+#             */
+/*   Updated: 2023/11/03 11:58:41 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstdlib>
-#include <exception>
-#include <iostream>
+#ifndef HELPER_HPP
+#define HELPER_HPP
 
-#include "BitcoinExchange.hpp"
+#include <string>
 
-int main(int ac, char **av) {
-  (void)ac;
-  try {
-    BitcoinExchange btc = BitcoinExchange(av[1]);
-  } catch (std::exception &e) {
-    std::cerr << "Error: " << e.what() << std::endl;
-  }
-}
+bool months30(int month);
+bool months31(int month);
+bool leapYear(int year);
+
+#endif  // HELPER_HPP
