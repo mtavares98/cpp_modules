@@ -1,8 +1,9 @@
-SRC	=	main.cpp
+SRC	=	PmergeMe.cpp \
+		main.cpp
 
 OBJ	=	$(SRC:.cpp=.o)
 
-NAME	=	mutated
+NAME	=	PmergeMe
 CC	=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -I. -g -fsanitize=address
 
